@@ -136,6 +136,7 @@ exports.Prisma.SiteScalarFieldEnum = {
   name: 'name',
   url: 'url',
   description: 'description',
+  status: 'status',
   userId: 'userId'
 };
 
@@ -153,7 +154,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.SiteStatus = exports.$Enums.SiteStatus = {
+  Online: 'Online',
+  Offline: 'Offline',
+  Unknown: 'Unknown'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
