@@ -1,4 +1,5 @@
-import { IsOptional, IsString, IsUrl } from "class-validator";
+import { IsEnum, IsOptional, IsString, IsUrl } from "class-validator";
+import { SiteStatus } from "generated/prisma";
 
 export class SiteDto {
     @IsString()
@@ -9,9 +10,12 @@ export class SiteDto {
     @IsOptional()
     createdAt?: string
 
-    @IsUrl()
+    @IsUrl({ require_protocol: true }, { message: 'URL must include protocol (http:// or https://)' })
+    url: string
+
+    @IsEnum(SiteStatus)
     @IsOptional()
-    url?: string
+    status?: SiteStatus;
 
     @IsString()
     @IsOptional()

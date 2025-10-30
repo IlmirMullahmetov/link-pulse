@@ -25,6 +25,24 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 export type Site = $Result.DefaultSelection<Prisma.$SitePayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const SiteStatus: {
+  Online: 'Online',
+  Offline: 'Offline',
+  Unknown: 'Unknown'
+};
+
+export type SiteStatus = (typeof SiteStatus)[keyof typeof SiteStatus]
+
+}
+
+export type SiteStatus = $Enums.SiteStatus
+
+export const SiteStatus: typeof $Enums.SiteStatus
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -2081,6 +2099,7 @@ export namespace Prisma {
     name: string | null
     url: string | null
     description: string | null
+    status: $Enums.SiteStatus | null
     userId: string | null
   }
 
@@ -2091,6 +2110,7 @@ export namespace Prisma {
     name: string | null
     url: string | null
     description: string | null
+    status: $Enums.SiteStatus | null
     userId: string | null
   }
 
@@ -2101,6 +2121,7 @@ export namespace Prisma {
     name: number
     url: number
     description: number
+    status: number
     userId: number
     _all: number
   }
@@ -2113,6 +2134,7 @@ export namespace Prisma {
     name?: true
     url?: true
     description?: true
+    status?: true
     userId?: true
   }
 
@@ -2123,6 +2145,7 @@ export namespace Prisma {
     name?: true
     url?: true
     description?: true
+    status?: true
     userId?: true
   }
 
@@ -2133,6 +2156,7 @@ export namespace Prisma {
     name?: true
     url?: true
     description?: true
+    status?: true
     userId?: true
     _all?: true
   }
@@ -2214,8 +2238,9 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     name: string
-    url: string | null
+    url: string
     description: string | null
+    status: $Enums.SiteStatus
     userId: string
     _count: SiteCountAggregateOutputType | null
     _min: SiteMinAggregateOutputType | null
@@ -2243,6 +2268,7 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     description?: boolean
+    status?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["site"]>
@@ -2254,6 +2280,7 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     description?: boolean
+    status?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["site"]>
@@ -2265,6 +2292,7 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     description?: boolean
+    status?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["site"]>
@@ -2276,10 +2304,11 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     description?: boolean
+    status?: boolean
     userId?: boolean
   }
 
-  export type SiteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "name" | "url" | "description" | "userId", ExtArgs["result"]["site"]>
+  export type SiteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "name" | "url" | "description" | "status" | "userId", ExtArgs["result"]["site"]>
   export type SiteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2300,8 +2329,9 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       name: string
-      url: string | null
+      url: string
       description: string | null
+      status: $Enums.SiteStatus
       userId: string
     }, ExtArgs["result"]["site"]>
     composites: {}
@@ -2733,6 +2763,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Site", 'String'>
     readonly url: FieldRef<"Site", 'String'>
     readonly description: FieldRef<"Site", 'String'>
+    readonly status: FieldRef<"Site", 'SiteStatus'>
     readonly userId: FieldRef<"Site", 'String'>
   }
     
@@ -3181,6 +3212,7 @@ export namespace Prisma {
     name: 'name',
     url: 'url',
     description: 'description',
+    status: 'status',
     userId: 'userId'
   };
 
@@ -3241,6 +3273,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'SiteStatus'
+   */
+  export type EnumSiteStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SiteStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'SiteStatus[]'
+   */
+  export type ListEnumSiteStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SiteStatus[]'>
     
 
 
@@ -3329,8 +3375,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Site"> | Date | string
     updatedAt?: DateTimeFilter<"Site"> | Date | string
     name?: StringFilter<"Site"> | string
-    url?: StringNullableFilter<"Site"> | string | null
+    url?: StringFilter<"Site"> | string
     description?: StringNullableFilter<"Site"> | string | null
+    status?: EnumSiteStatusFilter<"Site"> | $Enums.SiteStatus
     userId?: StringFilter<"Site"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -3340,8 +3387,9 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     name?: SortOrder
-    url?: SortOrderInput | SortOrder
+    url?: SortOrder
     description?: SortOrderInput | SortOrder
+    status?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -3354,8 +3402,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Site"> | Date | string
     updatedAt?: DateTimeFilter<"Site"> | Date | string
     name?: StringFilter<"Site"> | string
-    url?: StringNullableFilter<"Site"> | string | null
+    url?: StringFilter<"Site"> | string
     description?: StringNullableFilter<"Site"> | string | null
+    status?: EnumSiteStatusFilter<"Site"> | $Enums.SiteStatus
     userId?: StringFilter<"Site"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -3365,8 +3414,9 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     name?: SortOrder
-    url?: SortOrderInput | SortOrder
+    url?: SortOrder
     description?: SortOrderInput | SortOrder
+    status?: SortOrder
     userId?: SortOrder
     _count?: SiteCountOrderByAggregateInput
     _max?: SiteMaxOrderByAggregateInput
@@ -3381,8 +3431,9 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Site"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Site"> | Date | string
     name?: StringWithAggregatesFilter<"Site"> | string
-    url?: StringNullableWithAggregatesFilter<"Site"> | string | null
+    url?: StringWithAggregatesFilter<"Site"> | string
     description?: StringNullableWithAggregatesFilter<"Site"> | string | null
+    status?: EnumSiteStatusWithAggregatesFilter<"Site"> | $Enums.SiteStatus
     userId?: StringWithAggregatesFilter<"Site"> | string
   }
 
@@ -3458,8 +3509,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     name: string
-    url?: string | null
+    url: string
     description?: string | null
+    status?: $Enums.SiteStatus
     user: UserCreateNestedOneWithoutSitesInput
   }
 
@@ -3468,8 +3520,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     name: string
-    url?: string | null
+    url: string
     description?: string | null
+    status?: $Enums.SiteStatus
     userId: string
   }
 
@@ -3478,8 +3531,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumSiteStatusFieldUpdateOperationsInput | $Enums.SiteStatus
     user?: UserUpdateOneRequiredWithoutSitesNestedInput
   }
 
@@ -3488,8 +3542,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumSiteStatusFieldUpdateOperationsInput | $Enums.SiteStatus
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3498,8 +3553,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     name: string
-    url?: string | null
+    url: string
     description?: string | null
+    status?: $Enums.SiteStatus
     userId: string
   }
 
@@ -3508,8 +3564,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumSiteStatusFieldUpdateOperationsInput | $Enums.SiteStatus
   }
 
   export type SiteUncheckedUpdateManyInput = {
@@ -3517,8 +3574,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumSiteStatusFieldUpdateOperationsInput | $Enums.SiteStatus
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3655,6 +3713,13 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type EnumSiteStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.SiteStatus | EnumSiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumSiteStatusFilter<$PrismaModel> | $Enums.SiteStatus
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -3667,6 +3732,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     userId?: SortOrder
   }
 
@@ -3677,6 +3743,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     userId?: SortOrder
   }
 
@@ -3687,7 +3754,18 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     userId?: SortOrder
+  }
+
+  export type EnumSiteStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SiteStatus | EnumSiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumSiteStatusWithAggregatesFilter<$PrismaModel> | $Enums.SiteStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSiteStatusFilter<$PrismaModel>
+    _max?: NestedEnumSiteStatusFilter<$PrismaModel>
   }
 
   export type SiteCreateNestedManyWithoutUserInput = {
@@ -3748,6 +3826,10 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutSitesInput, UserUncheckedCreateWithoutSitesInput>
     connectOrCreate?: UserCreateOrConnectWithoutSitesInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type EnumSiteStatusFieldUpdateOperationsInput = {
+    set?: $Enums.SiteStatus
   }
 
   export type UserUpdateOneRequiredWithoutSitesNestedInput = {
@@ -3867,13 +3949,31 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumSiteStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.SiteStatus | EnumSiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumSiteStatusFilter<$PrismaModel> | $Enums.SiteStatus
+  }
+
+  export type NestedEnumSiteStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SiteStatus | EnumSiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SiteStatus[] | ListEnumSiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumSiteStatusWithAggregatesFilter<$PrismaModel> | $Enums.SiteStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSiteStatusFilter<$PrismaModel>
+    _max?: NestedEnumSiteStatusFilter<$PrismaModel>
+  }
+
   export type SiteCreateWithoutUserInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     name: string
-    url?: string | null
+    url: string
     description?: string | null
+    status?: $Enums.SiteStatus
   }
 
   export type SiteUncheckedCreateWithoutUserInput = {
@@ -3881,8 +3981,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     name: string
-    url?: string | null
+    url: string
     description?: string | null
+    status?: $Enums.SiteStatus
   }
 
   export type SiteCreateOrConnectWithoutUserInput = {
@@ -3919,8 +4020,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Site"> | Date | string
     updatedAt?: DateTimeFilter<"Site"> | Date | string
     name?: StringFilter<"Site"> | string
-    url?: StringNullableFilter<"Site"> | string | null
+    url?: StringFilter<"Site"> | string
     description?: StringNullableFilter<"Site"> | string | null
+    status?: EnumSiteStatusFilter<"Site"> | $Enums.SiteStatus
     userId?: StringFilter<"Site"> | string
   }
 
@@ -3981,8 +4083,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     name: string
-    url?: string | null
+    url: string
     description?: string | null
+    status?: $Enums.SiteStatus
   }
 
   export type SiteUpdateWithoutUserInput = {
@@ -3990,8 +4093,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumSiteStatusFieldUpdateOperationsInput | $Enums.SiteStatus
   }
 
   export type SiteUncheckedUpdateWithoutUserInput = {
@@ -3999,8 +4103,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumSiteStatusFieldUpdateOperationsInput | $Enums.SiteStatus
   }
 
   export type SiteUncheckedUpdateManyWithoutUserInput = {
@@ -4008,8 +4113,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumSiteStatusFieldUpdateOperationsInput | $Enums.SiteStatus
   }
 
 
