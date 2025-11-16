@@ -1,0 +1,17 @@
+.link {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--background);
+  padding: 0.5rem 1rem;
+}
+
+.link:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-tertiary);
+  border: 2px solid var(--color-tertiary);
+}
+
+.link:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
