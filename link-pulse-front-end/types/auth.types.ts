@@ -14,4 +14,12 @@ export interface IAuthResponse {
     user: IUser;
 }
 
+export interface IProfileResponse {
+	user: IUser
+	statistics: {
+		label: string
+		value: string
+	}[]
+}
+
 export type TypeUserForm = Omit<IUser, 'id'> & {password?: string};

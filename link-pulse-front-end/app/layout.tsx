@@ -1,17 +1,27 @@
+
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Tektur, Roboto_Mono, Orbitron } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME } from "../constants/seo.constants";
 import { Providers } from "./providers";
+import { Toaster } from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const tektur = Tektur({
+  variable: "--font-tektur",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -31,9 +41,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${tektur.variable} ${robotoMono.variable} ${orbitron.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+        </Providers>
+        <Toaster
+          theme='dark'
+          position='bottom-right'
+          duration={1500}
+        />
       </body>
     </html>
   );

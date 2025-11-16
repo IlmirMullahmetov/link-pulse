@@ -1,14 +1,15 @@
 import { IBase } from "./base.types";
 
 export enum EnumSiteStatus {
-    Online = 'online',
-    Offline = 'offline',
-    Unknown = 'unknown'
+    Online = 'Online',
+    Offline = 'Offline',
+    Unknown = 'Unknown'
 }
 
 export interface ISiteResponse extends IBase {
     name: string;
-    status: EnumSiteStatus;
+    status?: EnumSiteStatus;
+    url: string;
     description?: string
 }
 

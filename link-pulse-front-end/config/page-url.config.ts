@@ -1,7 +1,8 @@
-class DASHBOARD {
+class PagesLinks {
     private root = '/i'
-
-    HOME = this.root
-    SITES = `${this.root}/sites`
+    HOME = '/'
+    PROFILE = `${this.root}`
+    SITES = `/sites`
+    
 }
-export const DASHBOARD_PAGES = new DASHBOARD();
+export const PAGES = new PagesLinks();
