@@ -1,8 +1,7 @@
 class PagesLinks {
-    private root = '/i'
-    HOME = '/'
-    PROFILE = `${this.root}`
-    SITES = `/sites`
-    
+  private root = '/i';
+  HOME = '/';
+  PROFILE = `${this.root}`;
+  SITES = `/sites`;
 }
 export const PAGES = new PagesLinks();

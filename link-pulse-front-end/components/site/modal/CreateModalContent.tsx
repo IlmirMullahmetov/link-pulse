@@ -1,29 +1,23 @@
-import { SiteService } from "@/services/site.service";
-import { TypeSiteFormState } from "@/types/site.types";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { SiteForm } from "./SiteForm";
+import { SiteService } from '@/services/site.service';
+import { TypeSiteFormState } from '@/types/site.types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { SiteForm } from './SiteForm';
 
 export type CreateModalContentProps = {
-    onClose: () => void;
-}
+  onClose: () => void;
+};
 
 export const CreateModalContent = ({ onClose }: CreateModalContentProps) => {
-    const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
-    const createMutation = useMutation({
-        
-        mutationKey: ['sites'],
-        mutationFn: (data: TypeSiteFormState) => SiteService.createSite(data),
-        onSuccess() {
-            queryClient.invalidateQueries({ queryKey: ['sites'] });
-            onClose();
-        }
-    });
+  const createMutation = useMutation({
+    mutationKey: ['sites'],
+    mutationFn: (data: TypeSiteFormState) => SiteService.createSite(data),
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ['sites'] });
+      onClose();
+    },
+  });
 
-     return (
-        <SiteForm
-            title="Создание ресурса"
-            onSubmit={(data) => createMutation.mutate(data)}
-        />
-    );
-}
+  return <SiteForm title='Создание ресурса' onSubmit={(data) => createMutation.mutate(data)} />;
+};

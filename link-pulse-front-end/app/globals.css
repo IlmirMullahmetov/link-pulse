@@ -1,15 +1,14 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 :root {
-  --background:#050505;
-  --color-primary:#36a689;
-  --color-secondary:#0d2a23;
+  --background: #050505;
+  --color-primary: #36a689;
+  --color-secondary: #0d2a23;
   --font-tektur: var(--font-tektur);
   --font-roboto: var(--font-roboto-mono);
   --font-orbitron: var(--font-orbitron);
-  --color-negative: #DF2E30;
-  --color-tertiary: #B98C13;
+  --color-negative: #df2e30;
+  --color-tertiary: #b98c13;
 }
 
 /* Fonts */
@@ -20,17 +19,12 @@
   font-family: var(--font-tektur);
 }
 .font-roboto {
-  font-family: var(--font-roboto-mono)
+  font-family: var(--font-roboto-mono);
 }
 
 body {
   background:
-    radial-gradient(
-      circle at 80% 80%,
-      rgba(54, 166, 137, 0.15) 0%,
-      rgba(10, 15, 20, 0.8) 40%,
-      rgba(24, 10, 8, 0.95) 100%
-    ),
+    radial-gradient(circle at 80% 80%, rgba(54, 166, 137, 0.15) 0%, rgba(10, 15, 20, 0.8) 40%, rgba(24, 10, 8, 0.95) 100%),
     linear-gradient(180deg, #0a1512 0%, #030605 100%);
   background-color: #06100d;
   color: var(--color-primary);
@@ -38,14 +32,19 @@ body {
   overflow: hidden;
   position: relative;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-tektur), system-ui, sans-serif;
   font-weight: 700;
 }
 
 .global-border {
   border: 2px solid var(--color-primary);
-  @apply rounded-lg
+  @apply rounded-lg;
 }
 .fade-in {
   animation: fadeIn 0.3s ease-in-out;
@@ -59,4 +58,3 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
   }
 }
-

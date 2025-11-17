@@ -1,25 +1,25 @@
 export interface IAuthForm {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 export interface IUser {
-    id: number;
-    name?: string;
-    email: string;
+  id: number;
+  name?: string;
+  email: string;
 }
 
 export interface IAuthResponse {
-    accessToken: string;
-    user: IUser;
+  accessToken: string;
+  user: IUser;
 }
 
 export interface IProfileResponse {
-	user: IUser
-	statistics: {
-		label: string
-		value: string
-	}[]
+  user: IUser;
+  statistics: {
+    label: string;
+    value: string;
+  }[];
 }
 
-export type TypeUserForm = Omit<IUser, 'id'> & {password?: string};
+export type TypeUserForm = Omit<IUser, 'id'> & { password?: string };
