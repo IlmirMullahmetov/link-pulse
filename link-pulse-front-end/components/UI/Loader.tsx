@@ -1,9 +1,17 @@
-import { LoaderCircle as LoaderIcon } from 'lucide-react';
+import Lottie from 'lottie-react';
+import ECGAnimation from '@/public/ECG.json';
 
-export const Loader = () => {
+type LoaderProps = {
+  width?: number;
+  height?: number;
+};
+
+export const Loader = ({ width = 100, height = 100 }: LoaderProps) => {
   return (
-    <div className='flex items-center justify-center'>
-      <LoaderIcon className='text-primary h-5 w-5 animate-spin' />
+    <div className='absolute top-0 left-0 z-50 h-full w-full'>
+      <div className='relative flex h-full items-center justify-center'>
+        <Lottie animationData={ECGAnimation} loop={true} style={{ width: width, height: height }} />
+      </div>
     </div>
   );
 };

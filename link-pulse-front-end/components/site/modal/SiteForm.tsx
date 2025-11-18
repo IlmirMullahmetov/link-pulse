@@ -9,9 +9,10 @@ type SiteFormProps = {
   title: string;
   defaultValues?: TypeSiteFormState;
   onSubmit: SubmitHandler<TypeSiteFormState>;
+  isLoading?: boolean;
 };
 
-export const SiteForm = ({ title, defaultValues, onSubmit }: SiteFormProps) => {
+export const SiteForm = ({ title, defaultValues, onSubmit, isLoading }: SiteFormProps) => {
   const { handleSubmit, register } = useForm<TypeSiteFormState>({
     mode: 'onChange',
     defaultValues,
@@ -31,7 +32,11 @@ export const SiteForm = ({ title, defaultValues, onSubmit }: SiteFormProps) => {
           <Input id='desciption' {...register('description')} placeholder='Укажите описание' />
         </FormField>
         <div className='flex justify-end'>
-          {isEdit ? <SecondaryButton>Изменить</SecondaryButton> : <PrimaryButton>Создать</PrimaryButton>}
+          {isEdit ? (
+            <SecondaryButton isLoading={isLoading}>Изменить</SecondaryButton>
+          ) : (
+            <PrimaryButton isLoading={isLoading}>Создать</PrimaryButton>
+          )}
         </div>
       </div>
     </form>

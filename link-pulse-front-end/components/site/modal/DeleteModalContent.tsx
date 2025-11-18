@@ -29,7 +29,9 @@ export const DeleteModalContent = ({ site, onClose }: DeleteModalContentProps) =
         <span className='text-sm font-extralight'>После удаления восстановить данные будет невозможно</span>
       </div>
       <div className='flex justify-end'>
-        <NegativeButton onClick={() => mutate(site.id)}>Удалить</NegativeButton>
+        <NegativeButton onClick={() => mutate(site.id)} isLoading={isPending}>
+          Удалить
+        </NegativeButton>
       </div>
     </div>
   );

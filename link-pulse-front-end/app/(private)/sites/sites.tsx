@@ -13,7 +13,11 @@ export const Sites = () => {
   const [sites, setSites] = useState<ISiteResponse[]>();
   const [modal, setModal] = useState<{ action: 'edit' | 'delete'; site: ISiteResponse } | null>(null);
 
-  const { data: sitesData, isLoading } = useQuery({
+  const {
+    data: sitesData,
+    isLoading,
+    isFetching,
+  } = useQuery({
     queryKey: ['sites'],
     queryFn: () => SiteService.getSites(),
   });
@@ -22,7 +26,7 @@ export const Sites = () => {
     if (sitesData?.data) setSites(sitesData.data);
   }, [sitesData]);
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loader />;
   }
   return (

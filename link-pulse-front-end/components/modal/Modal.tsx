@@ -16,10 +16,12 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   return (
     <div className='fade-in fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xs' onClick={onClose}>
       <div className='global-border relative w-full max-w-lg bg-(--background) p-6' onClick={(e) => e.stopPropagation()}>
-        <PrimaryButton onClick={() => onClose()} className='absolute -top-6 -right-6'>
-          {' '}
-          <X />
-        </PrimaryButton>
+        <div className='absolute -top-6 -right-6'>
+          <PrimaryButton onClick={() => onClose()}>
+            {' '}
+            <X />
+          </PrimaryButton>
+        </div>
         {children}
       </div>
     </div>

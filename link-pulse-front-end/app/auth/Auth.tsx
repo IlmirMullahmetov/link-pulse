@@ -19,7 +19,7 @@ export function Auth() {
   const [isLoginForm, setIsLoginForm] = useState(false);
 
   const { push } = useRouter();
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ['auth'],
     mutationFn: (data: IAuthForm) => authService.main(isLoginForm ? 'login' : 'register', data),
     onSuccess() {
@@ -62,8 +62,12 @@ export function Auth() {
             />
           </div>
           <div className='flex justify-end gap-2'>
-            <SecondaryButton onClick={() => setIsLoginForm(false)}>Регистрация</SecondaryButton>
-            <PrimaryButton onClick={() => setIsLoginForm(true)}>Войти</PrimaryButton>
+            <SecondaryButton isLoading={!isLoginForm && isPending} onClick={() => setIsLoginForm(false)}>
+              Регистрация
+            </SecondaryButton>
+            <PrimaryButton isLoading={isLoginForm && isPending} onClick={() => setIsLoginForm(true)}>
+              Войти
+            </PrimaryButton>
           </div>
         </div>
       </form>
