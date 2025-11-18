@@ -11,7 +11,7 @@ export type EditModalContentProps = {
 export const EditModalContent = ({ site, onClose }: EditModalContentProps) => {
   const queryClient = useQueryClient();
 
-  const editMutation = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (data: TypeSiteFormState) => SiteService.updateSite(site.id, data),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ['sites'] });
@@ -19,5 +19,5 @@ export const EditModalContent = ({ site, onClose }: EditModalContentProps) => {
     },
   });
 
-  return <SiteForm title='Редактирование ресурса' defaultValues={site} onSubmit={(data) => editMutation.mutate(data)} />;
+  return <SiteForm title='Редактирование ресурса' defaultValues={site} onSubmit={(data) => mutate(data)} isLoading={isPending} />;
 };

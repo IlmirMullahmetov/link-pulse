@@ -10,7 +10,7 @@ export type CreateModalContentProps = {
 export const CreateModalContent = ({ onClose }: CreateModalContentProps) => {
   const queryClient = useQueryClient();
 
-  const createMutation = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ['sites'],
     mutationFn: (data: TypeSiteFormState) => SiteService.createSite(data),
     onSuccess() {
@@ -19,5 +19,5 @@ export const CreateModalContent = ({ onClose }: CreateModalContentProps) => {
     },
   });
 
-  return <SiteForm title='Создание ресурса' onSubmit={(data) => createMutation.mutate(data)} />;
+  return <SiteForm title='Создание ресурса' onSubmit={(data) => mutate(data)} isLoading={isPending} />;
 };

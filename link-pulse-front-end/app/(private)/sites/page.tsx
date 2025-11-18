@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function SitesPage() {
   return (
-    <div className='global-border flex h-full flex-col gap-8 bg-(--background) p-4'>
+    <div className='global-border fade-in flex h-full flex-col gap-8 bg-(--background) p-4'>
       <SitesHeader />
       <Sites />
     </div>

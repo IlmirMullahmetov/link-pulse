@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className='mt-8 flex flex-col gap-4'>
+    <div className='fade-in mt-8 flex flex-col gap-4'>
       <div>
         <h1 className='text-primary text-xl font-medium'>Мой Профиль</h1>
       </div>
